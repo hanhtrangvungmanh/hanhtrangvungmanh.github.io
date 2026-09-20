@@ -85,12 +85,14 @@ body {
 .dark .wp-block-list > li:contains("---") {
     border-color: #334155;
 }
-
-li {
+.the_content ul {
+    list-style: disc;
+}
+.the_content li {
     display: list-item;
     unicode-bidi: isolate;
 }
-a {
+.the_content a {
     text-decoration: none;
     border-bottom: 1px dotted #bcd;
     color: #d99e45;
