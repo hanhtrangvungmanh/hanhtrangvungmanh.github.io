@@ -86,3 +86,14 @@ body {
     border-color: #334155;
 }
 
+li {
+    display: list-item;
+    unicode-bidi: isolate;
+}
+a {
+    text-decoration: none;
+    border-bottom: 1px dotted #bcd;
+    color: #d99e45;
+}
+
+
