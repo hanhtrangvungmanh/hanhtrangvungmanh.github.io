@@ -4,112 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hành Trang Vững Mạnh - Vinh Glory</title>
-    <!-- Tailwind CSS CDN -->
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Custom smooth scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.05);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.4);
-        }
-    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col md:flex-row overflow-x-hidden">
 
-    <!-- Mobile Header (Visible only on mobile/tablet < md) -->
-    <header class="md:hidden flex items-center justify-between bg-white dark:bg-slate-800 px-4 py-3 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-30 shadow-sm">
-        <div class="flex items-center space-x-3">
-            <img src="/r/hanhTrangVungManh768Icon.jpg" 
-                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/6366f1/ffffff?text=Logo';" 
-                 alt="Logo Hành Trang Vững Mạnh" 
-                 class="w-9 h-9 object-cover rounded-lg shadow-sm">
-            <span class="font-bold text-base tracking-wide text-slate-800 dark:text-white">Hành Trang Vững Mạnh</span>
-        </div>
-        <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Menu">
-            <i class="fa-solid fa-bars text-xl"></i>
-        </button>
-    </header>
-
-    <!-- Backdrop Overlay for Mobile Sidebar -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
-
-    <!-- Left Sidebar Menu Region -->
-    <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-50 w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col justify-between h-screen shrink-0">
-        
-        <!-- Sidebar Top Section -->
-        <div>
-            <!-- Logo & Brand Title Section -->
-            <div class="flex flex-col items-center justify-center p-6 border-b border-slate-100 dark:border-slate-700/50 text-center">
-                <!-- Mobile Close Button -->
-                <button id="close-sidebar-btn" class="md:hidden absolute top-4 right-4 p-1 text-slate-400 hover:text-slate-800 dark:hover:text-white">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-
-                <!-- Logo Image -->
-                <img src="/r/hanhTrangVungManh768Icon.jpg" 
-                     onerror="this.onerror=null; this.src='https://placehold.co/120x120/6366f1/ffffff?text=Logo';" 
-                     alt="Logo Hành Trang Vững Mạnh" 
-                     class="w-20 h-20 object-cover rounded-2xl shadow-md border-2 border-indigo-50 dark:border-slate-700 mb-3">
-                
-                <!-- Text under Logo -->
-                <span class="font-bold text-lg text-slate-800 dark:text-white tracking-wide leading-snug">
-                    Hành Trang Vững Mạnh
-                </span>
-            </div>
-
-            <!-- Navigation Links (Only 3 Menu Items) -->
-            <nav class="px-3 py-6 space-y-1.5">
-                <a href="/" class="flex items-center px-4 py-3 text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 font-semibold rounded-xl transition-all group shadow-sm">
-                    <i class="fa-solid fa-house w-5 h-5 mr-3 flex items-center justify-center text-lg"></i>
-                    <span>Trang chủ</span>
-                </a>
-
-                <a href="#gioi-thieu" class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 font-medium rounded-xl transition-all group">
-                    <i class="fa-solid fa-user-circle w-5 h-5 mr-3 flex items-center justify-center text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"></i>
-                    <span>Giới thiệu</span>
-                </a>
-
-                <a href="#tien-ich" class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 font-medium rounded-xl transition-all group">
-                    <i class="fa-solid fa-screwdriver-wrench w-5 h-5 mr-3 flex items-center justify-center text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"></i>
-                    <span>Tiện ích</span>
-                </a>
-            </nav>
-        </div>
-
-        <!-- Sidebar Footer / Theme Toggle -->
-        <div class="p-4 border-t border-slate-100 dark:border-slate-700/50">
-            <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-slate-900/50">
-                <span class="text-xs font-medium text-slate-500 dark:text-slate-400 px-2">Giao diện</span>
-                <button id="theme-toggle" class="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" title="Đổi giao diện">
-                    <i class="fa-solid fa-moon dark:hidden"></i>
-                    <i class="fa-solid fa-sun hidden dark:inline"></i>
-                </button>
-            </div>
-        </div>
-    </aside>
+    <!-- Vùng nhúng Sidebar từ sidebar.html -->
+    <div id="sidebar-container" class="flex flex-col md:flex-row shrink-0"></div>
 
     <!-- Right Main Content Area -->
     <main class="flex-1 overflow-y-auto h-[calc(100vh-61px)] md:h-screen p-6 sm:p-10 md:p-12">
         <div class="max-w-4xl mx-auto space-y-6">
-            
-            <!-- Greeting Banner Card -->
             <div class="bg-white dark:bg-slate-800 p-8 sm:p-10 rounded-3xl border border-slate-100 dark:border-slate-700/50 shadow-sm transition-all hover:shadow-md">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
                     Xin chào! Tôi là Vinh Glory
@@ -118,46 +23,10 @@
                     Chào mừng đến với trang web cá nhân của tôi trên GitHub Pages.
                 </p>
             </div>
-
         </div>
     </main>
 
-    <!-- JavaScript for Mobile Sidebar Toggle and Dark Mode -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebar = document.getElementById('sidebar');
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const closeSidebarBtn = document.getElementById('close-sidebar-btn');
-            const overlay = document.getElementById('sidebar-overlay');
-            const themeToggle = document.getElementById('theme-toggle');
-
-            // Open Mobile Sidebar
-            function openSidebar() {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-                setTimeout(() => {
-                    overlay.classList.remove('opacity-0');
-                }, 10);
-            }
-
-            // Close Mobile Sidebar
-            function closeSidebar() {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.add('opacity-0');
-                setTimeout(() => {
-                    overlay.classList.add('hidden');
-                }, 300);
-            }
-
-            mobileMenuBtn.addEventListener('click', openSidebar);
-            closeSidebarBtn.addEventListener('click', closeSidebar);
-            overlay.addEventListener('click', closeSidebar);
-
-            // Dark Mode Toggle
-            themeToggle.addEventListener('click', () => {
-                document.documentElement.classList.toggle('dark');
-            });
-        });
-    </script>
+    <!-- Nhúng duy nhất 1 file script -->
+    <script src="sidebar.js"></script>
 </body>
 </html>
