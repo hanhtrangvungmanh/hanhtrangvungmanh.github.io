@@ -22,3 +22,67 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.4);
 }
+
+/* Styling chuẩn theo vietnamnotary.org/tien-ich */
+.wp-block-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Các dòng nội dung chính */
+.wp-block-list li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #334155;
+    margin-bottom: 0.35rem;
+}
+
+/* Link liên kết xanh truyền thống, tự ngắt dòng khi quá dài */
+.wp-block-list a {
+    color: #2563eb;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.wp-block-list a:hover {
+    text-decoration: underline;
+}
+
+/* Biến các chuỗi gạch ngang (--------) thành đường kẻ ngang mờ tinh tế */
+.wp-block-list > li:has(a[href*="#"]), 
+.wp-block-list > li:contains("—"),
+.wp-block-list > li:contains("---") {
+    border-top: 1px solid #e2e8f0;
+    margin: 1.25rem 0;
+    padding: 0;
+    font-size: 0; /* Giấu ký tự gạch thô */
+    line-height: 0;
+}
+
+/* Danh sách con (Sub-list & AI Chat) */
+.wp-block-list ul, 
+.wp-block-list ol {
+    padding-left: 1.25rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.wp-block-list ol {
+    list-style-type: decimal;
+}
+
+/* Hỗ trợ Dark Mode đồng bộ hệ thống của bạn */
+.dark .wp-block-list li {
+    color: #cbd5e1;
+}
+
+.dark .wp-block-list a {
+    color: #60a5fa;
+}
+
+.dark .wp-block-list > li:contains("—"),
+.dark .wp-block-list > li:contains("---") {
+    border-color: #334155;
+}
+
