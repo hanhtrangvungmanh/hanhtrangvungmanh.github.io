@@ -88,6 +88,7 @@ body {
 }
 .the_content ul {
     list-style: disc;
+    padding: unset;
 }
 .the_content li {
     display: list-item;
