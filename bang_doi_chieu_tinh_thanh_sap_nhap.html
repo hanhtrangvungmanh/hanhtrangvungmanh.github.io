@@ -20,7 +20,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col md:flex-row overflow-x-hidden">
-
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid gray;
+        padding: 6px;
+        text-align: left;
+    }
+    th {
+        font-weight: bold;
+        background-color: #70ad47; /* Nền dòng tiêu đề */
+        text-align: center;
+    }
+    /* Giữ màu nền các dòng còn lại theo bản gốc */
+    .bg-light {
+        background-color: #e2efda;
+    }
+    .text-center {
+        text-align: center;
+    }
+</style>
+    
     <!-- Vùng nhúng Sidebar từ sidebar.html -->
     <div id="sidebar-container" class="flex flex-col md:flex-row shrink-0"></div>
 
@@ -37,505 +60,259 @@
             <div class="the_content">
                 <h3 class="wp-block-heading">Tỉnh thành mới:</h3>
 
+<table>
+    <thead>
+        <tr>
+            <th>Stt</th>
+            <th>TP</th>
+            <th>Tỉnh thành mới</th>
+            <th>Tỉnh thành cũ</th>
+            <th>Không có sáp nhập</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="bg-light">
+            <td class="text-center">1</td>
+            <td></td>
+            <td>An Giang</td>
+            <td class="text-center">An Giang, Kiên Giang</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">2</td>
+            <td class="text-center">x</td>
+            <td>Bắc Ninh</td>
+            <td class="text-center">Bắc Ninh, Bắc Giang</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">3</td>
+            <td></td>
+            <td>Cà Mau</td>
+            <td class="text-center">Cà Mau, Bạc Liêu</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">4</td>
+            <td class="text-center">x</td>
+            <td>Cần Thơ</td>
+            <td class="text-center">Cần Thơ, Hậu Giang, Sóc Trăng</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">5</td>
+            <td></td>
+            <td>Cao Bằng</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr>
+            <td class="text-center">6</td>
+            <td class="text-center">x</td>
+            <td>Đà Nẵng</td>
+            <td class="text-center">Đà Nẵng, Quảng Nam</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">7</td>
+            <td></td>
+            <td>Đắk Lắk</td>
+            <td class="text-center">Đắk Lắk, Phú Yên</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">8</td>
+            <td></td>
+            <td>Điện Biên</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">9</td>
+            <td class="text-center">x</td>
+            <td>Đồng Nai</td>
+            <td class="text-center">Đồng Nai, Bình Phước</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">10</td>
+            <td></td>
+            <td>Đồng Tháp</td>
+            <td class="text-center">Đồng Tháp, Tiền Giang</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">11</td>
+            <td></td>
+            <td>Gia Lai</td>
+            <td class="text-center">Gia Lai, Bình Định</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">12</td>
+            <td class="text-center">x</td>
+            <td>Hà Nội</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">13</td>
+            <td></td>
+            <td>Hà Tĩnh</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr>
+            <td class="text-center">14</td>
+            <td class="text-center">x</td>
+            <td>Hải Phòng</td>
+            <td class="text-center">Hải Phòng, Hải Dương</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">15</td>
+            <td class="text-center">x</td>
+            <td>Huế</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr>
+            <td class="text-center">16</td>
+            <td></td>
+            <td>Hưng Yên</td>
+            <td class="text-center">Hưng Yên, Thái Bình</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">17</td>
+            <td></td>
+            <td>Khánh Hòa</td>
+            <td class="text-center">Khánh Hòa, Ninh Thuận</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">18</td>
+            <td></td>
+            <td>Lai Châu</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">19</td>
+            <td></td>
+            <td>Lâm Đồng</td>
+            <td class="text-center">Lâm Đồng, Bình Thuận, Đắk Nông</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">20</td>
+            <td></td>
+            <td>Lạng Sơn</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">21</td>
+            <td></td>
+            <td>Lào Cai</td>
+            <td class="text-center">Lào Cai, Yên Bái</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">22</td>
+            <td></td>
+            <td>Nghệ An</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">23</td>
+            <td></td>
+            <td>Ninh Bình</td>
+            <td class="text-center">Ninh Bình, Hà Nam, Nam Định</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">24</td>
+            <td></td>
+            <td>Phú Thọ</td>
+            <td class="text-center">Phú Thọ, Hòa Bình, Vĩnh Phúc</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">25</td>
+            <td></td>
+            <td>Quảng Ngãi</td>
+            <td class="text-center">Quảng Ngãi, Kon Tum</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">26</td>
+            <td class="text-center">x</td>
+            <td>Quảng Ninh</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">27</td>
+            <td></td>
+            <td>Quảng Trị</td>
+            <td class="text-center">Quảng Trị, Quảng Bình</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">28</td>
+            <td></td>
+            <td>Sơn La</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">29</td>
+            <td></td>
+            <td>Tây Ninh</td>
+            <td class="text-center">Tây Ninh, Long An</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">30</td>
+            <td></td>
+            <td>Thái Nguyên</td>
+            <td class="text-center">Thái Nguyên, Bắc Kạn</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">31</td>
+            <td></td>
+            <td>Thanh Hóa</td>
+            <td></td>
+            <td class="text-center">x</td>
+        </tr>
+        <tr>
+            <td class="text-center">32</td>
+            <td class="text-center">x</td>
+            <td>TP Hồ Chí Minh</td>
+            <td class="text-center">TP Hồ Chí Minh, Bình Dương, Bà Rịa – Vũng Tàu</td>
+            <td></td>
+        </tr>
+        <tr class="bg-light">
+            <td class="text-center">33</td>
+            <td></td>
+            <td>Tuyên Quang</td>
+            <td class="text-center">Tuyên Quang, Hà Giang</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text-center">34</td>
+            <td></td>
+            <td>Vĩnh Long</td>
+            <td class="text-center">Vĩnh Long, Bến Tre, Trà Vinh</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 
-<figure class="table" style="width:546pt;">
-    <table class="ck-table-resized" style="border-collapse:collapse;" border="0" cellpadding="0" cellspacing="0" width="727">
-        <colgroup><col style="width:6.96%;" width="50"><col style="width:21.06%;" width="153"><col style="width:59.34%;" width="432"><col style="width:12.64%;" width="92"></colgroup>
-        <tbody>
-            <tr style="height:44.25pt;" height="59">
-                <td class="xl66" style="background-attachment:scroll;background-clip:border-box;background-color:#70AD47;background-image:none;background-origin:padding-box;background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-size:auto;border-bottom-width:1.0pt;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-width:.5pt;border-right-width:.5pt;border-top-width:.5pt;font-style:normal;height:44.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:top;white-space-collapse:collapse;width:38pt;" height="59" width="50">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"><strong>Stt</strong></span>
-                </td>
-                <td class="xl65" style="background-attachment:scroll;background-clip:border-box;background-color:#70AD47;background-image:none;background-origin:padding-box;background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-size:auto;border-bottom-width:1.0pt;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-width:.5pt;border-right-width:.5pt;border-top-width:.5pt;font-style:normal;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:top;white-space-collapse:collapse;width:115pt;" width="153">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"><strong>Tỉnh thành mới</strong></span>
-                </td>
-                <td class="xl67" style="background-attachment:scroll;background-clip:border-box;background-color:#70AD47;background-image:none;background-origin:padding-box;background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-size:auto;border-bottom-width:1.0pt;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-width:.5pt;border-right-width:.5pt;border-top-width:.5pt;font-style:normal;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:top;white-space-collapse:collapse;width:324pt;" width="432">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"><strong>Tỉnh thành cũ</strong></span>
-                </td>
-                <td class="xl68" style="background-attachment:scroll;background-clip:border-box;background-color:#70AD47;background-image:none;background-origin:padding-box;background-position-x:0%;background-position-y:0%;background-repeat:repeat;background-size:auto;border-bottom-width:1.0pt;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-width:.5pt;border-right-width:.5pt;border-top-width:.5pt;font-style:normal;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:wrap;vertical-align:top;white-space-collapse:collapse;width:69pt;" width="92">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"><strong>Không có sáp nhập</strong></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">1</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">An Giang</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">An Giang, Kiên Giang</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">2</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Bắc Ninh</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Bắc Ninh, Bắc Giang</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">3</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Cà Mau</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Cà Mau, Bạc Liêu</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:21.75pt;" height="29">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:21.75pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="29">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">4</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Cần Thơ</span>
-                </td>
-                <td class="xl73" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:wrap;vertical-align:bottom;white-space-collapse:collapse;width:324pt;" width="432">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Cần Thơ, Hậu Giang, Sóc Trăng</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">5</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Cao Bằng</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">6</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Đà Nẵng</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Đà Nẵng, Quảng Nam</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">7</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Đắk Lắk</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Đắk Lắk, Phú Yên</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">8</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Điện Biên</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">9</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Đồng Nai</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Đồng Nai, Bình Phước</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">10</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Đồng Tháp</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Đồng Tháp, Tiền Giang</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">11</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Gia Lai</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Gia Lai, Bình Định</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">12</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Hà Nội</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">13</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Hà Tĩnh</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">14</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Hải Phòng</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Hải Phòng, Hải Dương</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">15</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Huế</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">16</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Hưng Yên</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Hưng Yên, Thái Bình</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">17</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Khánh Hòa</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Khánh Hòa, Ninh Thuận</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">18</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Lai Châu</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">19</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Lâm Đồng</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Lâm Đồng, Bình Thuận, Đắk Nông</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">20</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Lạng Sơn</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">21</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Lào Cai</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Lào Cai, Yên Bái</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">22</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Nghệ An</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">23</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Ninh Bình</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Ninh Bình, Hà Nam, Nam Định</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">24</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Phú Thọ</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Phú Thọ, Hòa Bình, Vĩnh Phúc</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">25</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Quảng Ngãi</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Quảng Ngãi, Kon Tum</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">26</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Quảng Ninh</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">27</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Quảng Trị</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Quảng Trị, Quảng Bình</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">28</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Sơn La</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">29</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Tây Ninh</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Tây Ninh, Long An</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">30</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Thái Nguyên</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Thái Nguyên, Bắc Kạn</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">31</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Thanh Hóa</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">x</span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">32</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Thành phố Hồ Chí Minh</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">TP Hồ Chí Minh, Bình Dương, Bà Rịa &#8211; Vũng Tàu</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="background-color:#E2EFDA;border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">33</span>
-                </td>
-                <td class="xl70" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Tuyên Quang</span>
-                </td>
-                <td class="xl71" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Tuyên Quang, Hà Giang</span>
-                </td>
-                <td class="xl72" style="background-color:#E2EFDA;border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-            <tr style="height:20.25pt;" height="27">
-                <td class="xl69" style="border-color:#70AD47;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-width:.5pt;font-style:normal;font-weight:400;height:20.25pt;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;" height="27">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">34</span>
-                </td>
-                <td class="xl70" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#A9D08E;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Vĩnh Long</span>
-                </td>
-                <td class="xl71" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#70AD47;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;">Vĩnh Long, Bến Tre, Trà Vinh</span>
-                </td>
-                <td class="xl72" style="border-bottom-color:#A9D08E;border-image-outset:0;border-image-repeat:stretch;border-image-slice:100%;border-image-source:none;border-image-width:1;border-left-color:#70AD47;border-right-color:#A9D08E;border-top-color:#A9D08E;border-width:.5pt;font-style:normal;font-weight:400;padding-left:1px;padding-right:1px;padding-top:1px;text-align:center;text-decoration-color:currentcolor;text-decoration-line:none;text-decoration-style:solid;text-decoration-thickness:auto;text-decoration:none;text-line-through:none;text-underline-style:none;text-wrap-mode:nowrap;vertical-align:bottom;white-space-collapse:collapse;">
-                    <span style="color:black;font-family:&quot;Segoe UI&quot;, sans-serif;font-size:14.0pt;"></span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</figure>
 
 
 
