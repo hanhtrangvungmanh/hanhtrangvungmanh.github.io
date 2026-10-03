@@ -1,2 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trang Vững Mạnh - Vinh Glory</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Open Graph / Zalo / Facebook Preview (Tuyệt đối để tĩnh) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tendangnhap.github.io/">
+    <meta property="og:title" content="Hành Trang Vững Mạnh - Vinh Glory">
+    <meta property="og:description" content="Trang web cá nhân của Vinh Glory.">
+    <meta property="og:image" content="https://tendangnhap.github.io/r/hanhTrangVungManh768Icon.jpg">
+
+    <!-- Assets -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+
+    <!-- Vùng nhúng Sidebar từ sidebar.html -->
+    <div id="sidebar-container" class="flex flex-col md:flex-row shrink-0"></div>
+
+    <!-- Right Main Content Area -->
+    <main class="flex-1 overflow-y-auto h-[calc(100vh-61px)] md:h-screen p-3 sm:p-4 md:p-5">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-800 p-2 sm:p-3 rounded-3xl border border-slate-100 dark:border-slate-700/50 shadow-sm transition-all hover:shadow-md">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent leading-relaxed sm:leading-relaxed md:leading-relaxed">
+                    Debian 13 (Trixie) / KDE Plasma 6 (Wayland); KVM/QEMU; Virt-Manager (Virtual Machine Manager); driver VirtIO.
+                </h1>
+            </div>
+        </div>
+        <div class="pt-8 leading-loose ">
+            <div class="the_content">
+                <pre>
+                  
+                  debian 13 wayland kde plasma 6: hướng dẫn tạo máy ảo win 11 với cấu hình tốt nhất để chạy ổn định, chống xung đột, chiếm dụng tài nguyên, .... 
+                  -----
+Để tạo máy ảo Windows 11 mượt, ổn định và tối ưu tài nguyên trên **Debian 13 (Trixie) / KDE Plasma 6 (Wayland)**, giải pháp chuẩn chuẩn nhất là dùng **KVM/QEMU** kết hợp với **Virt-Manager** (Virtual Machine Manager) và bộ driver **VirtIO**.
+
+Tránh dùng VirtualBox hay VMware trên Wayland/KDE 6 vì dễ gặp lỗi render UI, ngốn CPU vô lý và tương thích kém với Kernel mới.
+
+---
+
+## 1. Chuẩn bị hệ thống & Cài đặt gói
+
+Mở Terminal và cài đặt bộ ảo hóa KVM cùng các công cụ bổ trợ:
+
+```bash
+sudo apt update
+sudo apt install -y qemu-system-x86 qemu-utils virt-manager libvirt-daemon-system libvirt-clients bridge-utils virt-viewer swtpm
+
+```
+
+Thêm user hiện tại vào group `libvirt` và `kvm` để chạy không cần `sudo`:
+
+```bash
+sudo usermod -aG libvirt,kvm $USER
+
+```
+
+*(Cần **Log out** hoặc **Khởi động lại** máy để nhóm mới có hiệu lực).*
+
+### Tải bộ cài & Driver cần thiết:
+
+1. **ISO Windows 11**: Tải từ trang chủ Microsoft.
+2. **VirtIO Driver ISO**: Tải bản mới nhất (`virtio-win.iso`) từ Fedoraproject:
+```bash
+wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
+
+```
 
 
+
+---
+
+## 2. Tạo Máy Ảo Trong Virt-Manager
+
+Mở **Virtual Machine Manager** từ Application Menu của KDE Plasma.
+
+1. Bấm **Create a new virtual machine** (biểu tượng góc trên bên trái).
+2. Chọn **Local install media (ISO image or CDROM)** -> **Forward**.
+3. Chọn file ISO Windows 11. Mục OS type gõ chọn **Windows 11**.
+
+### Cấu hình phần cứng tối ưu:
+
+* **RAM & CPU:**
+* **RAM:** Gán $8192\text{ MB}$ (8GB) nếu máy host có 16GB.
+* **CPU:** Chọn số core bằng $1/2$ hoặc $3/4$ tổng số nhân thực.
+
+
+* **Storage:**
+* Chọn dung lượng tối thiểu **64 GB**.
+* Định dạng đĩa: Nên chọn **qcow2** (hỗ trợ snapshot và mở rộng động).
+
+
+* **Trước khi bấm Finish:** Tích chọn **"Customize configuration before install"**.
+
+---
+
+## 3. Cấu Hấp Tối Ưu Chi Tiết (Chống Lag, Tối Ưu Tài Nguyên)
+
+Tại cửa sổ cấu hình chi tiết trước khi cài đặt, điều chỉnh các mục sau:
+
+1. **Kích hoạt TPM 2.0 & UEFI:** Bắt buộc cho Win 11.
+* Vào mục **Overview**: Chuyển **Firmware** sang `UEFI x86_64: /usr/share/OVMF/OVMF_CODE.fd` (hoặc bản SECUREBOOT nếu có).
+* Bấm **Add Hardware** -> Chọn **TPM** -> Type: `Emulated`, Model: `CRB`, Version: `2.0`.
+
+
+2. **Cấu hình CPU Topology:** Tránh xung đột nhân.
+* Vào mục **CPUs**: Tích chọn **Configuration** -> **Topology**.
+* Điền: **Sockets**: 1, **Cores**: (số nhân bạn muốn gán, ví dụ 4), **Threads**: 1 hoặc 2.
+* Mục **Model**: Gõ `host-passthrough` hoặc chọn `host` (giúp máy ảo dùng trực tiếp tập lệnh CPU thực, tăng hiệu năng đáng kể).
+
+
+3. **Chuyển Ổ Đĩa & Mạng Sang VirtIO:** Tăng tốc I/O.
+* Vào **SATA Disk 1**: Chuyển **Disk bus** từ `SATA` sang **`VirtIO`**.
+* Vào **NIC (Network)**: Chuyển **Device model** sang **`virtio`**.
+
+
+4. **Gắn VirtIO Driver ISO:** Cung cấp driver lúc cài Win.
+* Bấm **Add Hardware** -> **Storage**.
+* Select or create custom storage -> Chọn đến file `virtio-win.iso` đã tải ở Mục 1.
+* Device type: **CDROM device**, Bus type: **SATA**.
+
+
+5. **Đồ Họa & Hiển Thị (Tối Ưu Cho Wayland/KDE 6):** Mượt mà, không bị xé hình.
+* Vào **Display Spice**: Listen type chọn `None` (hoặc `Address` -> `127.0.0.1` để bảo mật). Tích chọn **OpenGL** (chọn GPU rendering nếu có).
+* Vào **Video**: Chuyển Model sang **`QXL`** (khi mới cài) hoặc **`virtio`** (sau khi đã cài driver 3D).
+* Bấm **Begin Installation** ở góc trên.
+
+
+---
+
+## 4. Quá Trình Cài Đặt Windows 11
+
+1. **Nhận diện ổ cứng:**
+* Đến bước chọn ổ đĩa cài Win sẽ bị trống (do VirtIO bus). Bấm **Load driver** -> **Browse** -> Chọn ổ CD `virtio-win` -> Folder `amd64/Win11` -> Chọn driver `VirtIO SCSI controller` để ổ đĩa hiện ra.
+
+
+2. **Cài đặt Windows bình thường:** Hoàn tất các bước thiết lập Windows.
+
+---
+
+## 5. Tối Ưu Sau Khi Cài Đặt (Quan Trọng)
+
+Sau khi vào được desktop Windows 11:
+
+1. Mở File Explorer -> Mở ổ CD `virtio-win`.
+2. Chạy file **`virtio-win-gt-x64.exe`** (hoặc `virtio-win-guest-tools.exe`) để cài toàn bộ driver mạng, I/O, ballooning và màn hình.
+3. **Mở rộng tính năng:**
+* **Bắt buộc cài Spice Guest Tools**: Tải và cài `spice-guest-tools` trong Win 11 để tự động resize màn hình theo cửa sổ Virt-Manager, hỗ trợ clipboard chung (copy-paste giữa Debian và Win 11).
+* **Bật Memory Ballooning**: Giúp KVM thu hồi RAM thừa khi Windows không dùng đến, tránh chiếm dụng tài nguyên hệ thống Debian.
+
+
+
+### Xác minh cài đặt thành công
+
+Vào **Device Manager** trong Windows 11, kiểm tra xem tất cả thiết bị (Red Hat VirtIO Ethernet, VirtIO SCSI, System devices) đã nhận đủ driver và không còn dấu chấm than vàng.
+
+                  ===============================================
+
+                  chọn cả nơi lưu file qcow2 của máy ảo nữa
+                  -----
+                  Khi tạo máy ảo KVM, mặc định KVM/libvirt trên Debian 13 sẽ lưu file đĩa đệm `.qcow2` tại đường dẫn hệ thống:
+`/var/lib/libvirt/images/`
+
+Nếu ổ đĩa chứa thư mục gốc (`/`) của bạn dung lượng không quá lớn, việc lưu ở đây dễ gây đầy ổ đĩa hệ thống. Bạn hoàn toàn có thể **chọn nơi lưu file `.qcow2` ở bất kỳ thư mục/ổ đĩa nào** (ví dụ: ổ SSD thứ hai, ổ HDD dữ liệu, hoặc thư mục `/home`).
+
+Dưới đây là 2 cách thiết lập nơi lưu file `.qcow2` chuẩn nhất:
+
+---
+
+## Cách 1: Thiết lập Storage Pool mới trong Virt-Manager (Khuyên dùng)
+
+Cách này giúp bạn quản lý các file `.qcow2` tập trung, giao diện Virt-Manager sẽ tự động nhớ thư mục này cho các máy ảo tạo sau này và tự phân quyền truy cập cho KVM.
+
+1. Mở **Virtual Machine Manager**.
+2. Trên menu chính, chọn **Edit** -> **Connection Details**.
+3. Chuyển sang tab **Storage**.
+4. Bấm nút **`+` (Add Pool)** ở góc dưới bên trái:
+* **Name**: Đặt tên gợi nhớ (ví dụ: `Data_SSD` hoặc `VM_Storage`).
+* **Type**: Để mặc định là `dir: File System Directory`.
+* Bấm **Forward**.
+
+
+5. Mục **Target Path**: Bấm **Browse** -> Chọn thư mục trên đĩa/phân vùng bạn muốn lưu file máy ảo (ví dụ: `/media/data/VirtualMachines` hoặc `/home/username/VMs`).
+* *Lưu ý:* Bấm **New Folder** để tạo thư mục mới nếu cần.
+
+
+6. Bấm **Finish**.
+
+> **Khi tạo máy ảo (Bước 2 trong quá trình tạo VM):**
+> Tại bước **Storage**, chọn **"Select or create custom storage"** -> Bấm **Manage...** -> Chọn Pool vừa tạo ở cột bên trái -> Bấm **`+` (New Volume)** -> Đặt tên file (ví dụ `win11.qcow2`), định dạng `qcow2`, nhập dung lượng -> Bấm **Finish** và chọn volume đó.
+
+---
+
+## Cách 2: Chọn trực tiếp đường dẫn file trong quá trình tạo máy ảo
+
+Nếu bạn chỉ muốn chỉ định nhanh vị trí lưu cho duy nhất máy ảo này:
+
+1. Tại **Bước 4 (Storage)** trong thuật sĩ tạo máy ảo:
+* Chọn **Select or create custom storage** -> Bấm **Manage...**.
+
+
+2. Bấm nút **Browse Local** ở góc dưới.
+3. Tìm đến thư mục mong muốn trên máy tính (ví dụ: `/mnt/ssd2/win11.qcow2` hoặc thư mục trong `/home`).
+4. Đặt tên file kết thúc bằng đuôi `.qcow2` và bấm **Save**.
+
+---
+
+## ⚠️ Lưu ý quan trọng về phân quyền (Permission Issue)
+
+KVM/QEMU chạy dưới user hệ thống `libvirt-qemu` (hoặc `qemu`). Nếu bạn chọn lưu file `.qcow2` ở thư mục cá nhân (như `/home/user/...`) hoặc phân vùng ổ đĩa gắn ngoài, KVM có thể bị lỗi **Permission Denied** khi khởi động máy ảo.
+
+Để khắc phục triệt để:
+
+### 1. Phân quyền truy cập cho thư mục lưu:
+
+Mở Terminal và cấp quyền truy cập/sở hữu thư mục đó cho `libvirt-qemu` (thay `/path/to/your/vm-folder` bằng đường dẫn thực tế của bạn):
+
+```bash
+sudo chown -R libvirt-qemu:kvm /path/to/your/vm-folder
+sudo chmod -R 775 /path/to/your/vm-folder
+
+```
+
+### 2. Nếu lưu trên phân vùng NTFS / exFAT (Ổ đĩa Windows):
+
+KVM hoạt động không tốt trên định dạng đĩa NTFS/exFAT do thiếu tính năng phân quyền POSIX và sparse files. **Nên định dạng phân vùng lưu máy ảo sang `ext4` hoặc `btrfs**` để đạt hiệu năng I/O tốt nhất và tránh giật lag.
+                  ======================================
+
+                  sao này có tăng dung lượng file qcow2 được ko?
+                  -----
+                  **Có, tăng dung lượng file `.qcow2` rất dễ dàng và an toàn.**
+
+Quá trình này gồm 2 bước chính:
+
+1. **Tăng dung lượng file đĩa ảo `.qcow2` từ hệ điều hành Debian (Host).**
+2. **Mở rộng phân vùng ổ đĩa trong Windows 11 (Guest)** để nhận dung lượng vừa tăng.
+
+---
+
+### BƯỚC 1: Tăng dung lượng file `.qcow2` (Thực hiện trên Debian)
+
+*Lưu ý: Phải **Tắt máy ảo (Shutdown)** hoàn toàn trước khi thực hiện.*
+
+#### Cách 1: Sử dụng giao diện Virt-Manager (Đơn giản nhất)
+
+1. Mở **Virtual Machine Manager**, chuột phải vào máy ảo Windows 11 -> **Open**.
+2. Bấm vào biểu tượng **Lightbulb (Show virtual hardware details)** góc trên.
+3. Chọn ổ đĩa **VirtIO Disk 1** (hoặc SATA Disk 1).
+4. Ở cột bên phải, tìm mục **Virtual Size** / **Resize**.
+5. Nhập dung lượng mới muốn mở rộng (hoặc cộng thêm) -> Bấm **Apply**.
+
+#### Cách 2: Sử dụng dòng lệnh `qemu-img` (Nhanh & Chính xác)
+
+Mở Terminal trên Debian và chạy lệnh mở rộng dung lượng:
+
+* **Cộng thêm dung lượng** (ví dụ cộng thêm 20GB):
+```bash
+qemu-img resize /duong/dan/toi/file_may_ao.qcow2 +20G
+
+```
+
+
+* **Hoặc đặt kích thước tổng mới** (ví dụ nâng tổng đĩa lên 100GB):
+```bash
+qemu-img resize /duong/dan/toi/file_may_ao.qcow2 100G
+
+```
+
+
+
+---
+
+### BƯỚC 2: Mở rộng phân vùng trong Windows 11 (Thực hiện trên Máy ảo)
+
+Sau khi tăng dung lượng file `.qcow2`, dung lượng mới thêm vào sẽ ở dạng **Unallocated (Chưa phân bổ)**. Bạn cần gộp phần này vào ổ `C:` của Windows.
+
+1. Khởi động máy ảo Windows 11.
+2. Chuột phải vào nút **Start** -> Chọn **Disk Management** (Quản lý đĩa).
+3. Bạn sẽ thấy ổ `C:` nằm ngay bên cạnh một vùng màu đen ghi **Unallocated**.
+4. Chuột phải vào phân vùng **Ổ C:** -> Chọn **Extend Volume...** (Mở rộng dung lượng).
+5. Bấm **Next** -> **Next** -> **Finish** để nhận toàn bộ dung lượng mới.
+
+---
+
+### ⚠️ Mấy lưu ý quan trọng:
+
+* **Không thể giảm (shrink) dung lượng dễ dàng:** Tăng dung lượng thì rất an toàn, nhưng giảm dung lượng file `.qcow2` rất rủi ro và dễ làm hỏng hệ điều hành Windows. Vì vậy, nên tăng từ từ theo nhu cầu sử dụng.
+* **Tạo Snapshot trước khi làm:** Nếu cẩn thận, trước khi resize bạn nên tạo 1 Snapshot trong Virt-Manager để đề phòng thao tác nhầm.
+                  ==================================================
+
+                  win 11 26H2 + visual studio 2026 + MS office 2024 cần bao nhiêu GB?
+                  -----
+                  Để chạy mượt mà Windows 11 (phiên bản 26H2), Visual Studio 2026 và Microsoft Office 2024 trên máy ảo KVM mà không lo bị chật chội hay nghẽn đĩa, dung lượng thực tế cần thiết như sau:
+
+---
+
+### 1. Phân tích chi tiết dung lượng từng phần
+
+| Thành phần | Dung lượng cài đặt / Hoạt động | Ghi chú & Đề xuất |
+| --- | --- | --- |
+| **Windows 11 (26H2)** | ~ 25 – 35 GB | Bao gồm Windows Core, WinSxS folder, Pagefile / Swap và Temp hệ thống. |
+| **Visual Studio 2026** | ~ 15 – 35 GB | Tùy thuộc vào các Workload bạn chọn (C++ / .NET Desktop / Web development / Mobile SDKs / v.v.). |
+| **MS Office 2024** | ~ 4 – 5 GB | Bộ ứng dụng Office cơ bản (Word, Excel, PowerPoint, Outlook). |
+| **Dung lượng dôi dư (Buffer / Dev Cache)** | ~ 25 – 30 GB | Dành cho NuGet packages, Build output (`bin`/`obj`), Windows Updates và bộ nhớ đệm IDE. |
+
+---
+
+### 2. Mức dung lượng khuyến nghị khi tạo file `.qcow2`
+
+Dù bạn thiết lập dung lượng biểu kiến bao nhiêu, định dạng **`qcow2` chỉ chiếm dung lượng thực tế trên Debian khi Windows thực sự ghi dữ liệu vào**. Vì vậy, bạn hoàn toàn có thể đặt kích thước đĩa ảo lớn ngay từ đầu mà không lo tốn ổ SSD ngay lập tức:
+
+* **Tối thiểu (Cơ bản đủ dùng):** **`80 GB`**
+* *Tình trạng:* Vừa đủ cho Windows, Office và Visual Studio với số lượng Workload vừa phải. Tuy nhiên sau vài tháng sử dụng, các file update và build cache sẽ làm ổ `C:` bị báo đỏ.
+
+
+* **Tối ưu & Khuyên dùng:** **`100 GB – 120 GB`**
+* *Tình trạng:* Mức hoàn hảo nhất. Bạn có thể thoải mái cài thêm Workload .NET / C++, lưu trữ nhiều Project solution lớn, chạy cập nhật hệ thống và test phần mềm mà không lo hết dung lượng đột ngột.
+
+
+
+---
+
+### 💡 Mẹo nhỏ tối ưu dung lượng đĩa cho KVM:
+
+1. **Bật tính năng TRIM/Discard cho đĩa VirtIO:**
+Trong cấu hình Virt-Manager, chọn ổ đĩa VirtIO -> Mục **Discard mode** chọn **`unmap`**. Khi bạn xóa file hay build artifact trong Windows 11, KVM sẽ tự động trả lại dung lượng trống đó về cho ổ SSD trên hệ điều hành Debian.
+2. **Khuyên dùng ban đầu:** Tạo đĩa **`100 GB`** ngay từ đầu. Như đã đề cập ở lượt trước, file `.qcow2` sẽ bắt đầu bằng kích thước rất nhỏ (~25-30GB lúc mới cài xong Win) và tự mở rộng dần theo nhu cầu sử dụng thực tế.
+
+                  
+
+                  
+                  
+
+                </pre>
+            </div><!-- .the_content -->
+        </div>
+    </main>
+
+    <!-- Nhúng duy nhất 1 file script -->
+    <script src="sidebar.js"></script>
+</body>
+</html>
