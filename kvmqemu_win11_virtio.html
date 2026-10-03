@@ -332,11 +332,506 @@ Dù bạn thiết lập dung lượng biểu kiến bao nhiêu, định dạng *
 1. **Bật tính năng TRIM/Discard cho đĩa VirtIO:**
 Trong cấu hình Virt-Manager, chọn ổ đĩa VirtIO -> Mục **Discard mode** chọn **`unmap`**. Khi bạn xóa file hay build artifact trong Windows 11, KVM sẽ tự động trả lại dung lượng trống đó về cho ổ SSD trên hệ điều hành Debian.
 2. **Khuyên dùng ban đầu:** Tạo đĩa **`100 GB`** ngay từ đầu. Như đã đề cập ở lượt trước, file `.qcow2` sẽ bắt đầu bằng kích thước rất nhỏ (~25-30GB lúc mới cài xong Win) và tự mở rộng dần theo nhu cầu sử dụng thực tế.
+                ======================================
 
-                  
+                    Vào mục Overview: Chuyển Firmware sang UEFI x86_64 còn chipset chọn Q35 hay i440FX
+                    -----
+                    Bạn nên chọn **Q35**.
 
-                  
-                  
+Dưới đây là so sánh chi tiết để bạn dễ hình dung lý do vì sao **Q35 + UEFI** là lựa chọn bắt buộc cho Windows 11:
+
+### 1. **Q35 (Khuyên dùng & Bắt buộc cho Windows 11)**
+
+* **Công nghệ:** Mô phỏng chipset bo mạch chủ Intel ICH9/Q35 hiện đại (kết nối qua PCIe - PCI Express).
+* **Ưu điểm:**
+* **Hỗ trợ chuẩn chuẩn UEFI & TPM 2.0:** Đây là điều kiện tiên quyết để cài đặt và chạy Windows 11 mượt mà, không bị báo lỗi thiếu phần cứng.
+* **Hỗ trợ PCI Express Native:** Giúp các thiết bị ảo hóa như đĩa **VirtIO**, card mạng VirtIO, và đồ họa 3D/GPU Passthrough đạt hiệu năng I/O cao nhất.
+* Hỗ trợ tốt các tính năng quản lý nguồn điện, dội nhớ (Memory Ballooning) và tương thích hoàn hảo với Linux Kernel mới trên Debian 13.
+
+
+
+---
+
+### 2. **i440FX (Không nên dùng cho Win 11)**
+
+* **Công nghệ:** Mô phỏng chipset bo mạch chủ Intel 440FX rất cũ từ những năm 1996 (kết nối qua bus PCI cổ điển).
+* **Nhược điểm:**
+* Thiết kế chủ yếu cho BIOS legacy cũ hoặc các hệ điều hành cổ (Windows XP, Windows 7, Linux kernel cũ).
+* Giới hạn về băng thông PCI bus, gây nghẽn cổ chai đối với các driver VirtIO hiện đại và GPU Passthrough.
+* Khó cấu hình hoặc dễ phát sinh xung đột khi kết hợp với TPM 2.0 và Secure Boot của Windows 11.
+
+
+
+---
+
+### ⚙️ Thiết lập chuẩn nhất trong Virt-Manager:
+
+* **Firmware:** `UEFI x86_64: /usr/share/OVMF/OVMF_CODE.fd` (hoặc bản SECUREBOOT nếu có).
+* **Chipset:** **`Q35`**
+
+Cấu hình này sẽ giúp Windows 11 nhận diện đầy đủ phần cứng ảo hóa thế hệ mới, chạy mượt mà và chống xung đột tài nguyên tối đa trên Debian 13 Wayland.
+                    ========================================
+
+                    Bấm Add Hardware -> Chọn TPM -> Type: Emulated, Model: CRB, Version: 2.0.
+tôi thấy có sẵn mục TPM v None : có thể chọn để chỉnh không hay phải tạo mới
+                    -----
+                    Bạn **hoàn toàn có thể chỉnh trực tiếp trên mục TPM có sẵn** đó mà không cần bấm *Add Hardware* để tạo mới.
+
+Khi bạn chọn **OS Type là Windows 11** ở bước đầu tiên, Virt-Manager trên Debian 13 / KDE 6 đã tự động tạo sẵn cho bạn một thiết bị TPM mặc định (hiển thị là `TPM v None` hoặc `TPM`).
+
+---
+
+### Cách chỉnh trực tiếp trên mục TPM có sẵn:
+
+1. Bấm chuột trái vào mục **TPM** đang có sẵn trong danh sách thiết bị bên trái.
+2. Ở khung bên phải, bạn thiết lập các thông số như sau:
+* **Type**: Chọn `Emulated` *(hoặc Passthrough nếu dùng TPM phần cứng thực của máy host, nhưng `Emulated` là ổn định và chống xung đột nhất)*.
+* **Model**: Chọn `CRB` *(Command Response Buffer - chuẩn tối ưu cho UEFI/Win 11)*.
+* **Version**: Chọn `2.0`.
+
+
+3. Bấm **Apply** ở góc dưới bên phải để lưu cấu hình.
+
+---
+
+### 🔍 Cách kiểm tra nhanh:
+
+Nếu sau khi bấm **Apply**, tên thiết bị ở danh sách chuyển từ `TPM v None` sang **`TPM v2.0 (Emulated)`** là bạn đã cấu hình thành công, không cần phải thao tác trong *Add Hardware* nữa.
+                    ======================================
+
+                    2.Cấu hình CPU Topology:Tránh xung đột nhân.Vào mục CPUs: Tích chọn Configuration -> Topology.
+Điền: Sockets: 1, Cores: (số nhân bạn muốn gán, ví dụ 4), Threads: 1 hoặc 2. 
+nên để thread là 1 hay 2?
+                    -----
+                    Bạn nên để **Threads = 1** (hoặc đặt đúng theo kiến trúc nhân thực của CPU host) để đạt hiệu năng ổn định nhất và tránh tình trạng tranh chấp tài nguyên (CPU contention).
+
+Dưới đây là phân tích chi tiết giúp bạn đưa ra lựa chọn tối ưu nhất cho cấu hình của mình:
+
+---
+
+### 1. Tại sao nên chọn `Threads = 1`?
+
+* **Tránh hiện tượng Overcommit & Tranh chấp luồng (Contention):**
+Nếu CPU thực của bạn không có Hyper-Threading / SMT (hoặc bạn muốn gán nhân ảo theo tỉ lệ $1:1$ với nhân thực), đặt `Threads = 1` đảm bảo **1 vCPU của máy ảo sẽ map trực tiếp với 1 core vật lý thực sự trên Debian**. Điều này giúp tối thiểu độ trễ (latency), tránh hiện tượng các luồng ảo giành giật tài nguyên của nhau.
+* **Tối ưu cho công việc nặng (Compile code, Build Visual Studio):**
+Nhiều bài test ảo hóa KVM/QEMU cho thấy việc để `Threads = 1` giúp CPU làm việc ổn định, nhiệt độ thấp hơn và giữ xung nhịp Boost của CPU Host ở mức cao nhất.
+
+---
+
+### 2. Khi nào nên chọn `Threads = 2`?
+
+* **Khi CPU Host của bạn hỗ trợ Hyper-Threading / SMT:**
+Nếu CPU thực của bạn có Hyper-Threading (ví dụ: Intel Core i7 8 nhân 16 luồng, hoặc AMD Ryzen 6 nhân 12 luồng), việc đặt `Sockets = 1`, `Cores = 4`, `Threads = 2` sẽ khai báo cho Windows 11 biết rằng nó đang chạy trên một CPU có 4 nhân thực và 8 luồng logic.
+* **Windows 11 Scheduler tối ưu tốt hơn:**
+Trình lập lịch (Scheduler) của Windows 11 hiểu rõ mô hình nhân/luồng. Khi biết có 2 threads trên 1 core, Windows sẽ ưu tiên đẩy các tác vụ nặng vào luồng chính trước, chỉ dùng luồng phụ cho tác vụ nền.
+
+---
+
+### 💡 Công thức chọn chuẩn nhất cho máy của bạn:
+
+Giả sử bạn muốn gán **8 vCPU** cho máy ảo Windows 11:
+
+1. **Cách khuyên dùng (Đơn giản & Hiệu năng cao nhất):**
+* **Sockets:** `1`
+* **Cores:** `8`
+* **Threads:** `1`
+*(Windows 11 sẽ thấy đây là CPU 8 Cores / 8 Threads độc lập. Đây là cấu hình mượt và ít bị khựng/lag nhất).*
+
+
+2. **Cách mô phỏng đúng phần cứng thực (Nếu CPU host có Hyper-Threading):**
+* **Sockets:** `1`
+* **Cores:** `4`
+* **Threads:** `2`
+*(Windows 11 sẽ thấy CPU có 4 Cores / 8 Threads).*
+
+
+
+> **Mẹo quan trọng:**
+> Đừng quên đặt **Model** CPU là **`host-passthrough`** (hoặc chọn checkbox *Copy host CPU configuration*). Điều này quan trọng hơn nhiều so với số Threads, vì nó cho phép Windows 11 nhận toàn bộ bộ tập lệnh thực (AVX2, SSE4.2, AES,...) của CPU máy thật.
+                    ==================================
+
+                    Unable to complete install: 'internal error: process exited while connecting to monitor: 2026-10-01T10:18:53.136040Z qemu-system-x86_64: egl: eglInitialize failed: EGL_NOT_INITIALIZED
+2026-10-01T10:18:53.136145Z qemu-system-x86_64: egl: render node init failed'
+
+Traceback (most recent call last):
+  File "/usr/share/virt-manager/virtManager/asyncjob.py", line 71, in cb_wrapper
+    callback(asyncjob, *args, **kwargs)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/virt-manager/virtManager/createvm.py", line 2008, in _do_async_install
+    installer.start_install(guest, meter=meter)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/virt-manager/virtinst/install/installer.py", line 726, in start_install
+    domain = self._create_guest(
+            guest, meter, initial_xml, final_xml,
+            doboot, transient)
+  File "/usr/share/virt-manager/virtinst/install/installer.py", line 667, in _create_guest
+    domain = self.conn.createXML(initial_xml or final_xml, 0)
+  File "/usr/lib/python3/dist-packages/libvirt.py", line 4590, in createXML
+    raise libvirtError('virDomainCreateXML() failed')
+libvirt.libvirtError: internal error: process exited while connecting to monitor: 2026-10-01T10:18:53.136040Z qemu-system-x86_64: egl: eglInitialize failed: EGL_NOT_INITIALIZED
+2026-10-01T10:18:53.136145Z qemu-system-x86_64: egl: render node init failed
+                    -----
+
+                    Lỗi này xuất hiện do **QEMU không thể khởi tạo OpenGL/EGL trên Render Node của GPU** để gia tốc đồ họa. Trường hợp này xảy ra do 2 nguyên nhân phổ biến trên Wayland/KDE Plasma 6:
+
+1. Bạn đang bật **OpenGL 3D Acceleration** trong phần **Display Spice** nhưng dịch vụ QEMU (`libvirt-qemu`) không có quyền truy cập vào card màn hình (`/dev/dri/renderD128`).
+2. Môi trường Wayland/EGL chưa cho phép QEMU render trực tiếp qua GPU.
+
+Để khắc phục triệt để và giúp máy ảo khởi động ngay lập tức, bạn chọn 1 trong 2 cách sau:
+
+---
+
+### Cách 1: Tắt 3D Acceleration (Nhanh nhất & Đảm bảo máy ảo chạy ngay)
+
+Nếu chỉ cài Windows 11 để lập trình (Visual Studio), chạy Office hoặc ứng dụng văn phòng, bạn **không bắt buộc phải bật 3D Acceleration** khi mới cài đặt.
+
+1. Tại cửa sổ cấu hình chi tiết máy ảo (trước khi bấm *Begin Installation*):
+* Vào mục **Display Spice**: **Bỏ tích (Uncheck)** ô **3D acceleration** (hoặc **OpenGL**).
+* Vào mục **Video**: Chuyển **Model** thành **`QXL`** (hoặc `virtio` nhưng không bật 3D).
+
+
+2. Bấm **Begin Installation** lại. Máy ảo sẽ khởi động và cài đặt bình thường mà không bị lỗi EGL.
+
+---
+
+### Cách 2: Phân quyền DRM Render Node cho QEMU (Nếu vẫn muốn bật 3D Acceleration)
+
+Nếu bạn muốn giữ 3D Acceleration để giao diện Windows mượt hơn:
+
+1. **Thêm user libvirt-qemu vào nhóm render:** Thực hiện trên Terminal Debian.
+Mở Terminal trên Debian 13 và thêm daemon `libvirt-qemu` vào nhóm `render` và `video` để QEMU có quyền truy cập trực tiếp vào GPU:
+
+```bash
+sudo usermod -aG render,video libvirt-qemu
+
+```
+
+
+2. **Cấu hình Libvirt mở quyền truy cập Render Node:** Chỉnh sửa file cấu hình qemu.conf.
+Mở file cấu hình QEMU:
+
+```bash
+sudo nano /etc/libvirt/qemu.conf
+
+```
+
+Tìm đến dòng `user = ...` và `group = ...` hoặc thêm vào cuối file nội dung sau để cho phép cấp quyền cho DRM render node:
+
+```text
+cgroup_device_acl = [
+    "/dev/null", "/dev/full", "/dev/zero",
+    "/dev/random", "/dev/urandom",
+    "/dev/ptmx", "/dev/kvm",
+    "/dev/dri/card0", "/dev/dri/renderD128"
+]
+
+```
+
+*(Nhấn `Ctrl + O` -> `Enter` để lưu, `Ctrl + X` để thoát).*
+
+
+3. **Khởi động lại dịch vụ Libvirt:** Áp dụng thay đổi.
+Chạy lệnh khởi động lại `libvirtd`:
+
+```bash
+sudo systemctl restart libvirtd
+
+```
+
+
+### Kiểm tra thành công
+
+Sau khi thực hiện Cách 1 (tắt 3D) hoặc Cách 2 (phân quyền DRM), quay lại Virt-Manager và bấm **Begin Installation**. Cửa sổ cài đặt Windows 11 sẽ hiện ra ngay lập tức mà không còn báo lỗi `eglInitialize failed`.
+                    ====================================
+
+                    sau khi thiết lập nơi lưu file .qcow2 và bắt đầu cài đặt win 11 thì ko thấy ổ đĩa lưu trữ đâu
+                    -----
+
+                    Hiện tượng không thấy ổ đĩa xuất hiện ở bước chọn vị trí cài đặt Windows là **hoàn toàn bình thường**.
+
+Nguyên nhân là do ở bước cấu hình máy ảo, bạn đã chọn chuẩn giao tiếp đĩa cứng là **VirtIO** (để đạt tốc độ đọc/ghi nhanh nhất). Tuy nhiên, bộ cài Windows 11 gốc của Microsoft chưa tích hợp sẵn driver đĩa VirtIO này, nên Windows không tự nhận diện được ổ đĩa `.qcow2`.
+
+Bạn chỉ cần nạp driver VirtIO từ file ISO đã gắn sẵn theo các bước dưới đây:
+
+---
+
+### Các bước nạp Driver để hiện ổ đĩa:
+
+1. Tại màn hình cài đặt Windows 11 *(nơi báo trống ổ đĩa "Where do you want to install Windows?")*, bấm vào nút **Load driver** (ở góc dưới bên trái).
+2. Tại hộp thoại mới hiện ra, bấm **Browse**.
+3. Tìm đến ổ đĩa CD-ROM chứa file **`virtio-win`** *(thường là ổ đĩa D: hoặc E:)*.
+4. Mở thư mục theo đường dẫn sau:
+```text
+virtio-win -> viostor -> w11 -> amd64
+
+```
+
+
+*(Nếu không thấy folder `viostor`, bạn tìm theo đường dẫn: `virtio-win` -> `amd64` -> `Win11`).*
+5. Bấm **OK**. Danh sách sẽ hiện ra driver:
+**`Red Hat VirtIO SCSI controller`** (hoặc *Red Hat VirtIO Block driver*).
+6. Bấm **Next**. Quá trình nạp driver sẽ diễn ra trong vài giây, sau đó ổ đĩa `.qcow2` với đầy đủ dung lượng bạn vừa thiết lập sẽ ngay lập tức xuất hiện.
+7. Bấm vào ổ đĩa vừa hiện ra và nhấn **Next** để tiếp tục cài đặt Windows 11 bình thường.
+
+---
+
+### ⚠️ Lưu ý phụ:
+
+Nếu bạn không thấy ổ đĩa CD `virtio-win` trong bước **Browse**:
+
+* Hãy kiểm tra lại xem trong phần cấu hình hardware của Virt-Manager bạn đã **Add Hardware** -> **Storage** -> Chọn file `virtio-win.iso` dưới dạng ổ **CD-ROM** chưa.
+* Bạn có thể chọn biểu tượng đĩa trên thanh công cụ Virt-Manager để gắn (attach) file ISO `virtio-win.iso` vào máy ảo bất cứ lúc nào.
+                    =================================================
+
+                    virtio-win.iso tải ở đâu?
+                    -----
+
+                    File ISO driver **`virtio-win.iso`** chính thức được cung cấp và cập nhật liên tục bởi dự án **Fedora** (thuộc Red Hat).
+
+Bạn có thể tải nhanh trực tiếp bằng 1 trong các cách sau:
+
+---
+
+### Cách 1: Tải nhanh qua Terminal trên Debian (Khuyên dùng)
+
+Mở Terminal trên Debian 13 và chạy lệnh `wget` để tải thẳng bản **Stable (ổn định nhất)** về máy:
+
+```bash
+wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
+
+```
+
+---
+
+### Cách 2: Tải qua trình duyệt web
+
+Bạn truy cập trực tiếp vào các đường dẫn kho lưu trữ chính thức của Fedora:
+
+* **Link tải bản Stable (Khuyên dùng):**
+👉 [https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso](https://www.google.com/url?sa=E&source=gmail&q=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso)
+* **Link trang chủ danh sách tổng hợp tất cả các bản (Stable / Latest / RPM):**
+👉 [https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/)
+
+---
+
+### 💡 Cách gắn file `virtio-win.iso` vào máy ảo trong Virt-Manager:
+
+Nếu máy ảo đang ở màn hình cài đặt Windows và chưa nhận ổ đĩa:
+
+1. Trên cửa sổ máy ảo Virt-Manager, bấm vào nút **Add Hardware** (ở góc dưới bên trái màn hình cấu hình).
+2. Chọn mục **Storage**.
+3. Chọn **Select or create custom storage** -> Bấm **Manage...** -> Tìm đến file `virtio-win.iso` vừa tải về.
+4. Mục **Device type**: Chọn **`CDROM device`**.
+5. Mục **Bus type**: Chọn **`SATA`** hoặc **`IDE`**.
+6. Bấm **Finish**. Sau đó quay lại màn hình cài Windows bấm **Browse** tìm ổ CD này để nạp driver `viostor`.
+                    ================================
+
+                    card mạng virtio, lúc cài cũng ko nhận ra
+                    -----
+
+                    Hiện tượng **Windows 11 không nhận card mạng (Không có kết nối Internet / Bị kẹt ở màn hình setup "Let's connect you to a network")** khi cài đặt trên KVM là rất phổ biến.
+
+Nguyên nhân là do bộ cài Windows 11 gốc chưa có sẵn driver cho card mạng **VirtIO Net KVM**.
+
+Dưới đây là 2 bước để xử lý triệt meo: nạp driver mạng trực tiếp (hoặc bỏ qua kiểm tra mạng) và cài trọn bộ driver sau khi vào Windows.
+
+---
+
+### BƯỚC 1: Xử lý ngay tại màn hình cài đặt Windows 11
+
+#### Cách 1: Nạp Driver Mạng `NetKVM` (Khuyên dùng)
+
+Nếu bạn vẫn đang ở giao diện cài đặt Windows (hoặc ở bước chọn đĩa ban đầu):
+
+1. Khi cài Windows (hoặc sau khi cài xong tới đoạn chọn Region/Network), nếu có tùy chọn **Load driver** hoặc mở Device Manager, bạn duyệt vào ổ CD **`virtio-win`**.
+2. Đường dẫn driver mạng:
+```text
+virtio-win -> NetKVM -> w11 -> amd64
+
+```
+
+
+3. Nạp file driver này, card mạng VirtIO sẽ nhận ngay lập tức.
+
+---
+
+#### Cách 2: Bỏ qua màn hình bắt buộc kết nối Internet (OOBE Bypass)
+
+Nếu bạn đang bị kẹt ở màn hình thiết lập ban đầu **"Let's connect you to a network"** và nút *Next* bị ẩn:
+
+1. Nhấn tổ hợp phím **`Shift` + `F10**` (hoặc `Fn` + `Shift` + `F10`) để mở cửa sổ Command Prompt (CMD).
+2. Gõ chính xác lệnh sau rồi bấm **Enter**:
+```cmd
+OOBE\BYPASSNRO
+
+```
+
+
+3. Máy ảo sẽ tự động khởi động lại.
+4. Khi quay lại màn hình chọn Mạng, bạn sẽ thấy xuất hiện thêm nút **"I don't have internet"** -> Bấm vào đó -> Chọn **"Continue with limited setup"** để tạo tài khoản Local và vào thẳng Desktop Windows 11.
+
+---
+
+### BƯỚC 2: Cài trọn bộ Driver (Bao gồm Card Mạng) khi đã vào Desktop
+
+Sau khi vào được màn hình Desktop Windows 11:
+
+1. Mở **File Explorer** (`Win` + `E`) -> Vào **This PC**.
+2. Mở ổ CD-ROM **`virtio-win`**.
+3. Tìm và chạy file cài đặt tự động:
+* **`virtio-win-gt-x64.exe`** (hoặc `virtio-win-guest-tools.exe`).
+
+
+4. Bấm **Next** -> **Install** cấp quyền cài đặt toàn bộ driver.
+5. Chương trình sẽ tự động cài:
+* Driver card mạng VirtIO (`NetKVM`) -> **Internet sẽ có ngay lập tức**.
+* Driver bộ nhớ (`Ballooning`).
+* Driver hiển thị & chuột (`Spice Agent`).
+
+
+
+---
+
+### 💡 Mẹo nhỏ:
+
+Sau khi cài xong `virtio-win-gt-x64.exe`, bạn vào **Device Manager** kiểm tra lại, toàn bộ các mục bị chấm cảm vàng (Network, PCI Device, Unknown Device) sẽ được nhận đầy đủ và máy ảo sẽ hoạt động với hiệu năng cao nhất.
+
+                    =================================
+
+                    cài win 11 chọn "for person use"  hay "for work or school"?
+                    -----
+
+                    Chọn **"For personal use"** (Cho mục đích cá nhân).
+
+### Lý do:
+
+* **For personal use:** Dành cho máy tính cá nhân. Bạn sẽ đăng nhập bằng Tài khoản Microsoft cá nhân (Outlook, Hotmail, Gmail...) hoặc tạo tài khoản Local (nếu offline/lách qua bước mạng). Bạn có toàn quyền quản trị (Administrator) máy tính của mình mà không bị áp đặt chính sách kiểm soát nào.
+* **For work or school:** Dành cho máy thuộc sở hữu của công ty, tổ chức hoặc trường học. Lựa chọn này yêu cầu tài khoản Microsoft Entra ID (Azure AD) do tổ chức cấp, đồng thời áp đặt các chính sách quản lý thiết bị (MDM/Group Policy) từ quản trị viên IT của tổ chức đó.
+
+Nếu đây là máy tính cá nhân của bạn, hãy luôn chọn **"For personal use"**.
+                    ======================================
+
+                    ko có lựa chọn nào ko phải đăng nhập tài khoản MS à?
+                    -----
+
+                    Trong trình cài đặt Windows 11 tiêu chuẩn, Microsoft đã ẩn tùy chọn tạo tài khoản cục bộ (Local Account). Tuy nhiên, bạn hoàn toàn có thể bỏ qua bước đăng nhập tài khoản Microsoft bằng các phương pháp dưới đây.
+
+---
+
+### Phương pháp 1: Sử dụng lệnh `oobe\bypassnro` (Nhanh và phổ biến nhất)
+
+Phương pháp này khởi động lại quy trình cài đặt và thêm nút **"I don't have internet"** (Tôi không có internet) để tạo tài khoản Local.
+
+1. **Mở cửa sổ Command Prompt:** Tại màn hình kết nối mạng.
+Khi màn hình hiển thị yêu cầu kết nối Wi-Fi/mạng (hoặc màn hình yêu cầu đăng nhập Microsoft), nhấn tổ hợp phím **Shift + F10** (trên một số bàn phím laptop là **Shift + Fn + F10**) để mở cửa sổ lệnh CMD.
+
+
+2. **Nhập lệnh bỏ qua kiểm tra mạng:** Khởi động lại OOBE.
+Gõ chính xác lệnh sau vào cửa sổ CMD và nhấn **Enter**:
+
+```cmd
+oobe\bypassnro
+
+```
+
+Máy tính sẽ tự động khởi động lại và quay lại màn hình chọn vùng/bàn phím ban đầu.
+
+
+3. **Chọn tạo tài khoản Cục bộ:** Bỏ qua kết nối mạng.
+Khi quay lại màn hình kết nối mạng, bạn sẽ thấy tùy chọn **"I don't have internet"** ở góc dưới. Nhấp vào đó, sau đó chọn **"Continue with limited setup"**. Bạn có thể nhập tên người dùng và mật khẩu tùy ý để hoàn tất cài đặt.
+
+
+*Cách kiểm tra thành công:* Sau khi nhập xong lệnh, máy tính tự khởi động lại và xuất hiện thêm dòng chữ "I don't have internet" ở bước chọn mạng.
+
+---
+
+### Phương pháp 2: Sử dụng tài khoản bị khóa/email ảo
+
+Nếu máy tính đã lỡ kết nối Internet và đang kẹt ở màn hình đăng nhập Microsoft, bạn có thể dùng một tài khoản đã bị khóa để buộc Windows chuyển sang chế độ Local.
+
+1. **Nhập Email giả lập:** Màn hình Sign in.
+Tại ô đăng nhập email Microsoft, nhập địa chỉ: `no@thankyou.com` hoặc `a@a.com` rồi nhấn **Next**.
+
+
+2. **Nhập mật khẩu bất kỳ:** Xác nhận lỗi.
+Gõ bất kỳ mật khẩu nào (ví dụ: `123456`) rồi nhấn **Sign in**.
+
+
+3. **Xác nhận bỏ qua:** Tạo tài khoản Local.
+Hệ thống sẽ báo lỗi *"Oops, something went wrong"* (Đã xảy ra lỗi). Nhấn **Next**, hệ thống sẽ tự động chuyển bạn sang màn hình **"Who's going to use this device?"** để tạo tài khoản Local.
+
+
+*Cách kiểm tra thành công:* Màn hình thông báo lỗi xuất hiện và khi bấm tiếp tục sẽ hiện ô đặt tên User cá nhân thay vì yêu cầu xác thực email.
+
+---
+
+### Phương pháp 3: Bỏ qua ngay từ bước tạo USB cài đặt (Dành cho lần sau)
+
+Nếu bạn tạo USB cài Windows bằng phần mềm **Rufus**:
+
+1. Trong Rufus, sau khi chọn file ISO Windows 11 và bấm **Start**.
+2. Một bảng tùy chọn **Windows User Experience** sẽ hiện ra.
+3. Tích chọn vào mục **"Remove requirement for an online Microsoft account"**.
+4. USB sau khi tạo xong khi cài đặt sẽ tự động cho phép tạo tài khoản Local mà không cần thao tác thêm.
+
+                    ================================================
+
+                    đang cài ở mục cài win 11 chọn "for person use" hay "for work or school", muốn cài cục bộ
+                    -----
+
+                    Nếu bạn đang ở ngay màn hình chọn giữa **"For personal use"** và **"For work or school"** và muốn cài tài khoản cục bộ (Local Account), hãy thao tác như sau:
+
+---
+
+### Các bước thực hiện ngay tại màn hình này
+
+1. **Mở cửa sổ Command Prompt:** Nhấn tổ hợp phím.
+Bấm tổ hợp phím **Shift + F10** (hoặc **Shift + Fn + F10** trên một số laptop). Một cửa sổ màu đen (CMD) sẽ xuất hiện đè lên màn hình cài đặt.
+
+
+2. **Chạy lệnh hủy bắt buộc mạng/tài khoản:** Nhập lệnh bypass.
+Gõ chính xác dòng lệnh sau vào cửa sổ CMD rồi nhấn **Enter**:
+
+```cmd
+oobe\bypassnro
+
+```
+
+
+3. **Đợi máy tính khởi động lại:** Tự động Reboot.
+Máy tính sẽ tự khởi động lại và đưa bạn trở lại từ bước chọn Vùng (Region) và Kiểu bàn phím (Keyboard layout).
+
+
+4. **Bỏ qua kết nối Internet:** Bước chọn mạng Wi-Fi/Ethernet.
+Khi quay lại các bước thiết lập, đến màn hình kết nối mạng:
+
+* Nếu đang cắm dây mạng LAN: **Hãy rút dây mạng ra**.
+* Chọn dòng **"I don't have internet"** (Tôi không có internet) ở góc dưới bên dưới.
+* Chọn tiếp **"Continue with limited setup"** (Tiếp tục với thiết lập giới hạn).
+
+
+5. **Đặt tên tài khoản Local:** Hoàn tất.
+Màn hình tạo tài khoản Cục bộ sẽ hiện ra. Bạn chỉ cần nhập **Tên người dùng (User name)** và **Mật khẩu (Password)** theo ý muốn để vào thẳng Desktop.
+
+
+*Cách kiểm tra thành công:* Sau khi máy khởi động lại và qua bước chọn bàn phím, ở màn hình kết nối mạng sẽ xuất hiện tùy chọn *"I don't have internet"*.
+
+---
+
+### Trường hợp phím Shift + F10 không mở được CMD
+
+Nếu phím tắt bị khóa hoặc không mở được CMD, bạn hãy chọn **"For personal use"** để đi tiếp:
+
+1. Nhấn **Next** cho đến màn hình yêu cầu nhập email Microsoft.
+2. Tại ô nhập email, gõ: `no@thankyou.com`
+3. Nhập mật khẩu bất kỳ (ví dụ: `123456`) rồi nhấn **Sign in**.
+4. Hệ thống báo lỗi, bấm **Next** và Windows sẽ tự động chuyển sang màn hình đặt tên cho **Tài khoản Cục bộ (Local Account)**.
+                    =============================================================
+
+
+
+                    
+                
 
                 </pre>
             </div><!-- .the_content -->
