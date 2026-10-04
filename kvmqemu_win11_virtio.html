@@ -163,7 +163,9 @@ Sau khi vào được desktop Windows 11:
 
 Vào **Device Manager** trong Windows 11, kiểm tra xem tất cả thiết bị (Red Hat VirtIO Ethernet, VirtIO SCSI, System devices) đã nhận đủ driver và không còn dấu chấm than vàng.
 
-                  ===============================================
+
+                    
+===============================================
 
                   chọn cả nơi lưu file qcow2 của máy ảo nữa
                   -----
@@ -233,7 +235,9 @@ sudo chmod -R 775 /path/to/your/vm-folder
 ### 2. Nếu lưu trên phân vùng NTFS / exFAT (Ổ đĩa Windows):
 
 KVM hoạt động không tốt trên định dạng đĩa NTFS/exFAT do thiếu tính năng phân quyền POSIX và sparse files. **Nên định dạng phân vùng lưu máy ảo sang `ext4` hoặc `btrfs**` để đạt hiệu năng I/O tốt nhất và tránh giật lag.
-                  ======================================
+                  
+
+======================================
 
                   sao này có tăng dung lượng file qcow2 được ko?
                   -----
@@ -295,7 +299,9 @@ Sau khi tăng dung lượng file `.qcow2`, dung lượng mới thêm vào sẽ �
 
 * **Không thể giảm (shrink) dung lượng dễ dàng:** Tăng dung lượng thì rất an toàn, nhưng giảm dung lượng file `.qcow2` rất rủi ro và dễ làm hỏng hệ điều hành Windows. Vì vậy, nên tăng từ từ theo nhu cầu sử dụng.
 * **Tạo Snapshot trước khi làm:** Nếu cẩn thận, trước khi resize bạn nên tạo 1 Snapshot trong Virt-Manager để đề phòng thao tác nhầm.
-                  ==================================================
+                  
+                    
+==================================================
 
                   win 11 26H2 + visual studio 2026 + MS office 2024 cần bao nhiêu GB?
                   -----
@@ -334,7 +340,9 @@ Dù bạn thiết lập dung lượng biểu kiến bao nhiêu, định dạng *
 1. **Bật tính năng TRIM/Discard cho đĩa VirtIO:**
 Trong cấu hình Virt-Manager, chọn ổ đĩa VirtIO -> Mục **Discard mode** chọn **`unmap`**. Khi bạn xóa file hay build artifact trong Windows 11, KVM sẽ tự động trả lại dung lượng trống đó về cho ổ SSD trên hệ điều hành Debian.
 2. **Khuyên dùng ban đầu:** Tạo đĩa **`100 GB`** ngay từ đầu. Như đã đề cập ở lượt trước, file `.qcow2` sẽ bắt đầu bằng kích thước rất nhỏ (~25-30GB lúc mới cài xong Win) và tự mở rộng dần theo nhu cầu sử dụng thực tế.
-                ======================================
+                
+                    
+ ======================================
 
                     Vào mục Overview: Chuyển Firmware sang UEFI x86_64 còn chipset chọn Q35 hay i440FX
                     -----
@@ -372,7 +380,9 @@ Dưới đây là so sánh chi tiết để bạn dễ hình dung lý do vì sao
 * **Chipset:** **`Q35`**
 
 Cấu hình này sẽ giúp Windows 11 nhận diện đầy đủ phần cứng ảo hóa thế hệ mới, chạy mượt mà và chống xung đột tài nguyên tối đa trên Debian 13 Wayland.
-                    ========================================
+                    
+                    
+========================================
 
                     Bấm Add Hardware -> Chọn TPM -> Type: Emulated, Model: CRB, Version: 2.0.
 tôi thấy có sẵn mục TPM v None : có thể chọn để chỉnh không hay phải tạo mới
@@ -399,7 +409,9 @@ Khi bạn chọn **OS Type là Windows 11** ở bước đầu tiên, Virt-Manag
 ### 🔍 Cách kiểm tra nhanh:
 
 Nếu sau khi bấm **Apply**, tên thiết bị ở danh sách chuyển từ `TPM v None` sang **`TPM v2.0 (Emulated)`** là bạn đã cấu hình thành công, không cần phải thao tác trong *Add Hardware* nữa.
-                    ======================================
+                    
+                    
+======================================
 
                     2.Cấu hình CPU Topology:Tránh xung đột nhân.Vào mục CPUs: Tích chọn Configuration -> Topology.
 Điền: Sockets: 1, Cores: (số nhân bạn muốn gán, ví dụ 4), Threads: 1 hoặc 2. 
@@ -450,7 +462,9 @@ Giả sử bạn muốn gán **8 vCPU** cho máy ảo Windows 11:
 
 > **Mẹo quan trọng:**
 > Đừng quên đặt **Model** CPU là **`host-passthrough`** (hoặc chọn checkbox *Copy host CPU configuration*). Điều này quan trọng hơn nhiều so với số Threads, vì nó cho phép Windows 11 nhận toàn bộ bộ tập lệnh thực (AVX2, SSE4.2, AES,...) của CPU máy thật.
-                    ==================================
+                    
+                    
+==================================
 
                     Unable to complete install: 'internal error: process exited while connecting to monitor: 2026-10-01T10:18:53.136040Z qemu-system-x86_64: egl: eglInitialize failed: EGL_NOT_INITIALIZED
 2026-10-01T10:18:53.136145Z qemu-system-x86_64: egl: render node init failed'
@@ -544,7 +558,9 @@ sudo systemctl restart libvirtd
 ### Kiểm tra thành công
 
 Sau khi thực hiện Cách 1 (tắt 3D) hoặc Cách 2 (phân quyền DRM), quay lại Virt-Manager và bấm **Begin Installation**. Cửa sổ cài đặt Windows 11 sẽ hiện ra ngay lập tức mà không còn báo lỗi `eglInitialize failed`.
-                    ====================================
+                    
+                    
+====================================
 
                     sau khi thiết lập nơi lưu file .qcow2 và bắt đầu cài đặt win 11 thì ko thấy ổ đĩa lưu trữ đâu
                     -----
@@ -583,7 +599,9 @@ Nếu bạn không thấy ổ đĩa CD `virtio-win` trong bước **Browse**:
 
 * Hãy kiểm tra lại xem trong phần cấu hình hardware của Virt-Manager bạn đã **Add Hardware** -> **Storage** -> Chọn file `virtio-win.iso` dưới dạng ổ **CD-ROM** chưa.
 * Bạn có thể chọn biểu tượng đĩa trên thanh công cụ Virt-Manager để gắn (attach) file ISO `virtio-win.iso` vào máy ảo bất cứ lúc nào.
-                    =================================================
+                    
+                    
+=================================================
 
                     virtio-win.iso tải ở đâu?
                     -----
@@ -626,7 +644,9 @@ Nếu máy ảo đang ở màn hình cài đặt Windows và chưa nhận ổ đ
 4. Mục **Device type**: Chọn **`CDROM device`**.
 5. Mục **Bus type**: Chọn **`SATA`** hoặc **`IDE`**.
 6. Bấm **Finish**. Sau đó quay lại màn hình cài Windows bấm **Browse** tìm ổ CD này để nạp driver `viostor`.
-                    ================================
+                    
+                    
+================================
 
                     card mạng virtio, lúc cài cũng ko nhận ra
                     -----
@@ -698,7 +718,8 @@ Sau khi vào được màn hình Desktop Windows 11:
 
 Sau khi cài xong `virtio-win-gt-x64.exe`, bạn vào **Device Manager** kiểm tra lại, toàn bộ các mục bị chấm cảm vàng (Network, PCI Device, Unknown Device) sẽ được nhận đầy đủ và máy ảo sẽ hoạt động với hiệu năng cao nhất.
 
-                    =================================
+                    
+=================================
 
                     cài win 11 chọn "for person use"  hay "for work or school"?
                     -----
@@ -711,7 +732,9 @@ Sau khi cài xong `virtio-win-gt-x64.exe`, bạn vào **Device Manager** kiểm 
 * **For work or school:** Dành cho máy thuộc sở hữu của công ty, tổ chức hoặc trường học. Lựa chọn này yêu cầu tài khoản Microsoft Entra ID (Azure AD) do tổ chức cấp, đồng thời áp đặt các chính sách quản lý thiết bị (MDM/Group Policy) từ quản trị viên IT của tổ chức đó.
 
 Nếu đây là máy tính cá nhân của bạn, hãy luôn chọn **"For personal use"**.
-                    ======================================
+                    
+                    
+======================================
 
                     ko có lựa chọn nào ko phải đăng nhập tài khoản MS à?
                     -----
@@ -776,7 +799,8 @@ Nếu bạn tạo USB cài Windows bằng phần mềm **Rufus**:
 3. Tích chọn vào mục **"Remove requirement for an online Microsoft account"**.
 4. USB sau khi tạo xong khi cài đặt sẽ tự động cho phép tạo tài khoản Local mà không cần thao tác thêm.
 
-                    ================================================
+                    
+================================================
 
                     đang cài ở mục cài win 11 chọn "for person use" hay "for work or school", muốn cài cục bộ
                     -----
@@ -828,7 +852,9 @@ Nếu phím tắt bị khóa hoặc không mở được CMD, bạn hãy chọn 
 2. Tại ô nhập email, gõ: `no@thankyou.com`
 3. Nhập mật khẩu bất kỳ (ví dụ: `123456`) rồi nhấn **Sign in**.
 4. Hệ thống báo lỗi, bấm **Next** và Windows sẽ tự động chuyển sang màn hình đặt tên cho **Tài khoản Cục bộ (Local Account)**.
-                    =============================================================
+                    
+                    
+=============================================================
 
 
 
