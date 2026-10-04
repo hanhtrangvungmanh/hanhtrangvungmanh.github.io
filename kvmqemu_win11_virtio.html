@@ -18,6 +18,8 @@
     <!-- Assets -->
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Nhúng thư viện Marked.js chuyển Markdown sang HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col md:flex-row overflow-x-hidden">
 
@@ -35,7 +37,7 @@
         </div>
         <div class="pt-8 leading-loose ">
             <div class="the_content">
-                <pre>
+                <pre id="markdown-content">
                   
                   debian 13 wayland kde plasma 6: hướng dẫn tạo máy ảo win 11 với cấu hình tốt nhất để chạy ổn định, chống xung đột, chiếm dụng tài nguyên, .... 
                   -----
@@ -840,5 +842,22 @@ Nếu phím tắt bị khóa hoặc không mở được CMD, bạn hãy chọn 
 
     <!-- Nhúng duy nhất 1 file script -->
     <script src="sidebar.js"></script>
+
+    <script>
+    // 1. Lấy phần tử thẻ pre
+    const preElement = document.getElementById('markdown-content');
+
+    // 2. Lấy nội dung text nguyên bản bên trong pre
+    const rawMarkdown = preElement.textContent;
+
+    // 3. Tạo một thẻ div mới để chứa HTML đã định dạng
+    const renderedDiv = document.createElement('div');
+    renderedDiv.id = preElement.id; // (Tùy chọn) Giữ lại ID cũ nếu cần
+    renderedDiv.innerHTML = marked.parse(rawMarkdown);
+
+    // 4. Thay thế thẻ pre bằng thẻ div mới
+    preElement.replaceWith(renderedDiv);
+  </script>
+    
 </body>
 </html>
